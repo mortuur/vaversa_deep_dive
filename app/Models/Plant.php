@@ -12,4 +12,8 @@ class Plant extends Model
     protected $fillable = [
         'name'
     ];
+    public function activity()
+    {
+        return $this->hasMany(Activity::class);
+    }
 }
