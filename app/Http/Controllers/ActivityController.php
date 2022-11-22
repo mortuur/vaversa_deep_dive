@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Activity;
 
@@ -36,7 +37,14 @@ class ActivityController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $activity = new Activity();
+        $activity->plant_id = $request['plant_id'];
+        $activity->name = $request['name_activity'];
+        $activity->description = $request['description_activity'];
+        $activity->due_date = $request['due_date_activity'];
+        $activity->save();
+
+        return redirect()->route('activities.index');
     }
 
     /**
@@ -53,24 +61,29 @@ class ActivityController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+ c     * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Activity $activity)
     {
-        return view('activities.edit');
+        $activity = Activity::find($activity->id);
+        return view('activities.edit', ['activity' => $activity]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Activity $activity)
     {
-        //
+        $activity->plant_id = $request['plant_id'];
+        $activity->name = $request['name_activity'];
+        $activity->description = $request['description_activity'];
+        $activity->due_date = $request['due_date_activity'];
+        $activity->save();
+
+        return redirect()->route('activities.index');
     }
 
     /**
