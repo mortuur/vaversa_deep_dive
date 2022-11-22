@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Activity;
 
-class Activity extends Controller
+class ActivityController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,17 +14,18 @@ class Activity extends Controller
      */
     public function index()
     {
-        //
+       $activities = Activity::all();
+       return view('activities.index', ['activities'=>$activities]);
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function create()
     {
-        //
+        return view('activities.create');
     }
 
     /**
@@ -56,7 +58,7 @@ class Activity extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('activities.edit');
     }
 
     /**
@@ -74,11 +76,10 @@ class Activity extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Activity $activity)
     {
-        //
+        Activity::destroy($activity->id);
     }
 }
