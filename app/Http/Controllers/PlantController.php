@@ -14,7 +14,8 @@ class PlantController extends Controller
      */
     public function index()
     {
-        //
+        $plants = Plant::all();
+        return view('plants.index', ['plants' => $plants]);
     }
 
     /**
@@ -24,7 +25,7 @@ class PlantController extends Controller
      */
     public function create()
     {
-        //
+        return view('plants.create');
     }
 
     /**
@@ -80,6 +81,7 @@ class PlantController extends Controller
      */
     public function destroy(Plant $plant)
     {
-        //
+        Plant::destroy($plant->id);
+        return redirect()->route('plants.index');
     }
 }

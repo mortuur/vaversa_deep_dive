@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Activity;
 use App\Http\Controllers\PlantController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,3 +19,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::resource('plants',PlantController::class);
+Route::resource('activities', Activity::class);
