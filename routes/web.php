@@ -18,5 +18,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('plants', [PlantController::class, 'index']);
+Route::get('plants', [PlantController::class, 'index'])->name('plants.index');
 Route::resource('activities', ActivityController::class);
