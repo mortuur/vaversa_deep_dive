@@ -2,18 +2,40 @@
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="style.css">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Pusher Test</title>
+    <script src="https://js.pusher.com/7.2/pusher.min.js"></script>
+    <script>
+        let registration = null;
+        navigator.serviceWorker.register('sw.js');
+        Notification.requestPermission(function(result) {
+            if (result === 'granted') {
+                navigator.serviceWorker.ready.then(function(reg) {
+                    registration = reg;
+                });
+            }
+        });
+        // Enable pusher logging - don't include this in production
+        Pusher.logToConsole = true;
+
+        var pusher = new Pusher('cae7dac27fa6d070710d', {
+            cluster: 'eu'
+        });
+
+        var channel = pusher.subscribe('my-channel');
+        channel.bind('my-event', function(data) {
+
+
+            registration?.showNotification(data.message);
+        });
+    </script>
 </head>
 
 <body>
-    <button id="button">
-        test
-    </button>
-    <script src="notification.js"></script>
+    <h1>Pusher Test</h1>
+    <p>
+        Try publishing an event to channel <code>my-channel</code>
+        with event name <code>my-event</code>.
+    </p>
 </body>
 
 </html>
