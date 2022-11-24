@@ -16,6 +16,8 @@ return new class extends Migration
         Schema::create('plants', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->date('added_date');
+            $table->string('image_url');
             $table->timestamps();
         });
     }
