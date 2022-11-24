@@ -30,7 +30,8 @@ class PlantFactory extends Factory
 
         return [
             'name' => $PlantCollection->random(),
-            'added_date' => $this->faker->dateTimeBetween('23-11-2022', '01-01-2023')
+            'added_date' => $this->faker->dateTimeBetween('23-10-2022', '23-11-2022'),
+            'image_url' => ""
         ];
     }
 }
