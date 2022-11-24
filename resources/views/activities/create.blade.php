@@ -4,8 +4,8 @@
 
 <div class="flex min-h-screen items-center justify-start bg-white">
   <div class="mx-auto w-full max-w-lg">
-    <h1 class="text-4xl font-medium text-violet-900">Vaversa</h1>
-    <p class="mt-3 text-violet-900">Activiteiten</p>
+    <img src="https://api.v1.iyyu.com/images/space/DyhSrd5hVZx9rph4BAhQBdoIkPx1ouEcpuKyYGb8JJ6KtTEBHlqz1YGGAvIhl6kb-480.png" width="100px" height="100px">
+    <p class="mt-3 text-purple-800">Activiteiten</p>
     <!-- @csrf -->
     <form method="POST" action="{{route('activities.store')}}" name="activiteiten" id="activiteiten" class="mt-10">
 
@@ -25,7 +25,7 @@
         </div>
       </div>
       <input type="hidden" name="plant_id" value="1">
-      <button type="submit" class="mt-5 rounded-md bg-violet-900 px-10 py-2 text-white">Send Message</button>
+      <button type="submit" class="mt-5 rounded-md bg-purple-900 px-10 py-2 text-white">Submit</button>
     </form>
   </div>
 </div>
