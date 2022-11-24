@@ -10,7 +10,8 @@ class Plant extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name'
+        'name',
+        'added_date'
     ];
     public function activity()
     {

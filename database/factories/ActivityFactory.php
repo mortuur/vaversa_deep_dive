@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Plant;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,7 +19,7 @@ class ActivityFactory extends Factory
     {
         return [
             'name' => $this->faker->name,
-            'plant_id'=> 1,
+            'plant_id'=> Plant::factory(),
             'description'=> $this->faker->text(150),
             'due_date' => $this->faker->dateTimeBetween('23-11-2022', '01-01-2023'),
             'is_completed' => $this->faker->numberBetween(0,1)

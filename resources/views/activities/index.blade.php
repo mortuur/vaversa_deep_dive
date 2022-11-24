@@ -9,11 +9,13 @@
 @foreach($activities as $activity)
     <div class=" transform transition duration-500 hover:scale-105 p-4 bg-white  rounded-lg w-80 shadow-md">
         <p>{{$activity->name}}</p>
-        <p class="bold">{{$activity->due_date}}</p>
+        <p class="font-bold	">{{$activity->due_date}}</p>
         <p>{{$activity->description}}</p>
-        <div class="flex flex-row">
-            <x-edit-icon></x-edit-icon>
-            <x-delete-icon></x-delete-icon>
+        <div class="flex flex-row justify-between">
+            <div class="flex flex-row">
+                <x-edit-icon></x-edit-icon>
+                <x-delete-icon></x-delete-icon>
+            </div>
             @if($activity->is_completed == 1)
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
             @endif
