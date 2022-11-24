@@ -2,7 +2,10 @@
 
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\PlantController;
+use App\Spiders\PlantSpider;
 use Illuminate\Support\Facades\Route;
+use RoachPHP\Roach;
+use Symfony\Component\CssSelector\CssSelectorConverter;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +19,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+
+    dd(Roach::collectSpider(PlantSpider::class));
+
     return view('welcome');
+
 });
-Route::get('plants', [PlantController::class, 'index']);
+Route::get('plants', [PlantController::class, 'index'])->name('plants.index');
 Route::resource('activities', ActivityController::class);
