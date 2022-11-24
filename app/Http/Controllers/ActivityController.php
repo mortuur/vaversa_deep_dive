@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Plant;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Activity;
@@ -15,8 +16,9 @@ class ActivityController extends Controller
      */
     public function index()
     {
-       $activities = Activity::all();
-       return view('activities.index', ['activities'=>$activities]);
+        $PlantNames = Plant::all('name');
+        $activities = Activity::all();
+        return view('activities.index', ['activities'=>$activities, 'PlantNames' => $PlantNames]);
     }
 
     /**

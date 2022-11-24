@@ -6,25 +6,29 @@
 @endsection
 
 @section('content')
-    @foreach($activities as $activity)
-                <p class="font-bold p-4">{{$activity->plant->name}}</p>
-                <div class=" pl-16  grid grid-cols-3 gap-12">
-                        <div class=" transform transition duration-500 hover:scale-105 p-2 bg-white  rounded-lg w-80 shadow-md">
-                            <p class="font-bold">{{$activity->plant->name}}</p>
-                            <p>{{$activity->name}}</p>
-                            <p class="font-bold	">{{$activity->due_date}}</p>
-                            <p>{{$activity->description}}</p>
-                            <div class="flex flex-row justify-between">
-                                <div class="flex flex-row">
-                                    <x-edit-icon></x-edit-icon>
-                                    <x-delete-icon></x-delete-icon>
-                                </div>
-                                @if($activity->is_completed == 1)
-                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                @endif
+    @foreach($PlantNames as $plant)
+        <p class="font-bold p-4">{{$plant->name}}</p>
+        <div class=" pl-12  grid grid-cols-3 gap-12">
+            @foreach($activities as $activity)
+                @if($activity->plant->name == $plant->name)
+                    <div class=" transform transition duration-500 hover:scale-105 p-2 bg-white  rounded-lg w-80 shadow-md">
+                        <p>{{$activity->name}}</p>
+                        <p class="font-bold	">{{$activity->due_date}}</p>
+                        <p>{{$activity->description}}</p>
+                        <div class="flex flex-row justify-between">
+                            <div class="flex flex-row">
+                                <x-edit-icon></x-edit-icon>
+                                <x-delete-icon></x-delete-icon>
                             </div>
+                            @if($activity->is_completed == 1)
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            @endif
                         </div>
-                </div>
+                    </div>
+                @endif
+            @endforeach
+
+        </div>
     @endforeach
 
 
