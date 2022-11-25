@@ -12,7 +12,7 @@
                 navigator.serviceWorker.ready.then(function(reg) {
                     registration = reg;
                 });
-            }
+            }   
         });
         // Enable pusher logging - don't include this in production
         Pusher.logToConsole = true;

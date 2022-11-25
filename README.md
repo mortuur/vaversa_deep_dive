@@ -54,7 +54,14 @@ dit kan je in je header zetten om tailwind activeren
 
 voor pusher moet je met composer nog een library binnen halen en dat doe je met ```composer require pusher/pusher-php-server```
 
+Laravel installation:
+1. run the command  ```composer install```
+2. Make a new file called .env copy the  .env.example file and paste it in youre empty .env file.
+3. run the command ```php artisan:serve``` 
+4. Now youre local server is up and running but we need an app key
+5. For youre key run this command ```php artisan key:generate```
 
+Now youre Laravel application is up and running
 
 ## Contributors
 
