@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Plant;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Activity;
@@ -15,8 +16,9 @@ class ActivityController extends Controller
      */
     public function index()
     {
-       $activities = Activity::all();
-       return view('activities.index', ['activities'=>$activities]);
+        $PlantNames = Plant::all('name');
+        $activities = Activity::all();
+        return view('activities.index', ['activities'=>$activities, 'PlantNames' => $PlantNames]);
     }
 
     /**
@@ -65,8 +67,9 @@ class ActivityController extends Controller
      */
     public function edit(Activity $activity)
     {
+        $Plants = Plant::all('name');
         $activity = Activity::find($activity->id);
-        return view('activities.edit', ['activity' => $activity]);
+        return view('activities.edit', ['activity' => $activity, 'plants' => $Plants]);
     }
 
     /**
@@ -77,7 +80,7 @@ class ActivityController extends Controller
      */
     public function update(Request $request, Activity $activity)
     {
-        $activity->plant_id = $request['plant_id'];
+        $activity->plant_id = Plant::where('name', $request['plant_id'])->first()->id;
         $activity->name = $request['name_activity'];
         $activity->description = $request['description_activity'];
         $activity->due_date = $request['due_date_activity'];
@@ -94,5 +97,7 @@ class ActivityController extends Controller
     public function destroy(Activity $activity)
     {
         Activity::destroy($activity->id);
+        return redirect()->route('activities.index');
+
     }
 }
