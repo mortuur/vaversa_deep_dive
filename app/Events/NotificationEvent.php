@@ -30,10 +30,14 @@ class NotificationEvent implements ShouldBroadcast
     /**
      * Get the channels the event should broadcast on.
      *
-     * @return \Illuminate\Broadcasting\Channel|array
+     * @return array
      */
     public function broadcastOn()
     {
         return ['my-channel'];
+    }
+    public function broadcastAs() {
+
+        return 'notification-event';
     }
 }

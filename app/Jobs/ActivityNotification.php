@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Events\NotificationEvent;
 use App\Models\Activity;
 use Carbon\Carbon;
 use GuzzleHttp\Exception\GuzzleException;
@@ -32,27 +33,28 @@ class ActivityNotification implements ShouldQueue
     /**
      * Execute the job.
      *
-     * @return void
+     * @return array
      */
     public function handle()
     {
-        $options = array(
-            'cluster' => 'eu',
-            'useTLS' => true
-        );
-        $pusher = new Pusher(
-            'ea9500a9bd60caef42e3',
-            '710bea10dde086e2d1b5',
-            '1513630',
-            $options
-        );
-
-        $data['message'] = 'hello world';
-        try {
-
-            $pusher->trigger('my-channel', 'my-event', $data);
-        } catch (GuzzleException|ApiErrorException|PusherException $e) {
-        }
+        return event(new NotificationEvent('test'));
+//        $options = array(
+//            'cluster' => 'eu',
+//            'useTLS' => true
+//        );
+//        $pusher = new Pusher(
+//            'ea9500a9bd60caef42e3',
+//            '710bea10dde086e2d1b5',
+//            '1513630',
+//            $options
+//        );
+//
+//        $data['message'] = 'hello world';
+//        try {
+//
+//            $pusher->trigger('my-channel', 'event', $data);
+//        } catch (GuzzleException|ApiErrorException|PusherException $e) {
+//        }
 //        foreach (Activity::all() as $activity)
 //        {
 //            if ($activity->is_completed != 1)

@@ -22,9 +22,13 @@
         });
 
         var channel = pusher.subscribe('my-channel');
+        channel.bind('pusher:subscription_succeeded', function(data) {
+            alert('successfully subscribed!');
+        });
 
-        channel.bind('my-event', function(data) {
-            registration?.showNotification(data.message);
+        channel.bind('notification-event', function(data) {
+            alert('erin');
+            registration.showNotification(data);
         });
     </script>
 </head>
