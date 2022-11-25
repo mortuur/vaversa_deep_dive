@@ -50,7 +50,7 @@ class ActivityNotification implements ShouldQueue
         $data['message'] = 'hello world';
         try {
 
-            dd($pusher->trigger('my-channel', 'my-event', $data));
+            $pusher->trigger('my-channel', 'my-event', $data);
         } catch (GuzzleException|ApiErrorException|PusherException $e) {
         }
 //        foreach (Activity::all() as $activity)
