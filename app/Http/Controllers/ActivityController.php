@@ -67,8 +67,9 @@ class ActivityController extends Controller
      */
     public function edit(Activity $activity)
     {
+        $Plants = Plant::all('name');
         $activity = Activity::find($activity->id);
-        return view('activities.edit', ['activity' => $activity]);
+        return view('activities.edit', ['activity' => $activity, 'plants' => $Plants]);
     }
 
     /**
@@ -79,7 +80,7 @@ class ActivityController extends Controller
      */
     public function update(Request $request, Activity $activity)
     {
-        $activity->plant_id = $request['plant_id'];
+        $activity->plant_id = Plant::where('name', $request['plant_id'])->first()->id;
         $activity->name = $request['name_activity'];
         $activity->description = $request['description_activity'];
         $activity->due_date = $request['due_date_activity'];
