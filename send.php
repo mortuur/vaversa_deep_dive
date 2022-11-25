@@ -12,5 +12,5 @@ $pusher = new Pusher\Pusher(
     $options
 );
 
-$data['message'] = 'hello world';
+$data['message'] = 'test 123';
 $pusher->trigger('my-channel', 'my-event', $data);
