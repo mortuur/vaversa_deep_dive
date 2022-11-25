@@ -17,8 +17,16 @@
                         <p>{{$activity->description}}</p>
                         <div class="flex flex-row justify-between">
                             <div class="flex flex-row">
-                                <x-edit-icon></x-edit-icon>
-                                <x-delete-icon></x-delete-icon>
+                                <a href="{{route('activities.edit', $activity->id)}}">
+                                    <x-edit-icon></x-edit-icon>
+                                </a>
+                                <form action="{{route('activities.destroy', $activity->id)}}" method="post">
+                                    @method('delete')
+                                    @csrf
+                                    <button type="submit">
+                                        <x-delete-icon></x-delete-icon>
+                                    </button>
+                                </form>
                             </div>
                             @if($activity->is_completed == 1)
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
