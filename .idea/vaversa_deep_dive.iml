@@ -11,8 +11,13 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/roach-php/laravel" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/masterminds/html5" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/jakeasmith/http_build_url" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/paragonie/sodium_compat" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/paragonie/random_compat" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/pusher/pusher-php-server" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="pusher" level="application" />
+    <orderEntry type="library" name="bootstrap" level="application" />
   </component>
 </module>

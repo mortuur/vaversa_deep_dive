@@ -19,11 +19,8 @@ use Symfony\Component\CssSelector\CssSelectorConverter;
 */
 
 Route::get('/', function () {
-
-    dd(Roach::collectSpider(PlantSpider::class));
-
     return view('welcome');
-
 });
+
 Route::get('plants', [PlantController::class, 'index'])->name('plants.index');
 Route::resource('activities', ActivityController::class);

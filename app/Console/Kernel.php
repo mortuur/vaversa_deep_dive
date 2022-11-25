@@ -17,7 +17,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-         $schedule->job(new ActivityNotification)->everyTwoMinutes();
+        $schedule->job(new ActivityNotification())->everyMinute();
     }
 
     /**
