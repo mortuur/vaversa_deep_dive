@@ -9,7 +9,7 @@
     @foreach($activities as $activity)
                 <p class="font-bold p-4">{{$activity->plant->name}}</p>
                 <div class=" pl-16  grid grid-cols-3 gap-12">
-                        <div class=" transform transition duration-500 hover:scale-105 p-2 bg-white  rounded-lg w-80 shadow-md">
+                        <div class=" transform transition duration-500 hover:scale-105 p-2 bg-white  rounded-lg w-80 shadow-md hover:bg-gray-200">
                             <p class="font-bold">{{$activity->plant->name}}</p>
                             <p>{{$activity->name}}</p>
                             <p class="font-bold	">{{$activity->due_date}}</p>
