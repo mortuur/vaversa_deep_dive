@@ -28,7 +28,8 @@ class ActivityController extends Controller
      */
     public function create()
     {
-        return view('activities.create');
+       $plants =  Plant::all('name');
+        return view('activities.create', ['plants' => $plants]);
     }
 
     /**
@@ -39,11 +40,13 @@ class ActivityController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request['name_activity']);
         $activity = new Activity();
-        $activity->plant_id = $request['plant_id'];
+        $activity->plant_id = Plant::where('name', $request['plant_id'])->first()->id;
         $activity->name = $request['name_activity'];
         $activity->description = $request['description_activity'];
         $activity->due_date = $request['due_date_activity'];
+        $activity->is_completed = 0;
         $activity->save();
 
         return redirect()->route('activities.index');

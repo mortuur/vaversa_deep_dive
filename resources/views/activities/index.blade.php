@@ -6,6 +6,11 @@
 @endsection
 
 @section('content')
+    <div class="flex flex-row-reverse">
+        <a href="{{route('activities.create')}}">
+            <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+        </a>
+    </div>
     @foreach($PlantNames as $plant)
         <p class="font-bold p-4">{{$plant->name}}</p>
         <div class=" pl-12  grid grid-cols-3 gap-12">
